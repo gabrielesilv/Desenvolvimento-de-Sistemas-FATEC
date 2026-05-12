@@ -1,0 +1,43 @@
+package com.marktplace.cliente.controller;
+
+import com.marktplace.cliente.entity.RegistroEntity;
+import com.marktplace.cliente.service.RegistroService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/registros")
+public class RegistroController {
+
+    @Autowired
+    private RegistroService service;
+
+    @GetMapping
+    public List<RegistroEntity> listarTodos() {
+        return service.listarTodos();
+    }
+
+    @GetMapping("/{id}")
+    public RegistroEntity buscarPorId(@PathVariable Long id) {
+        return service.buscarPorId(id);
+    }
+
+    @PostMapping
+    public RegistroEntity salvar(@RequestBody RegistroEntity registro) {
+        return service.salvar(registro);
+    }
+
+    @PutMapping("/{id}")
+    public RegistroEntity atualizar(@PathVariable Long id,
+                                    @RequestBody RegistroEntity registro) {
+
+        return service.atualizar(id, registro);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deletar(@PathVariable Long id) {
+        service.deletar(id);
+    }
+}

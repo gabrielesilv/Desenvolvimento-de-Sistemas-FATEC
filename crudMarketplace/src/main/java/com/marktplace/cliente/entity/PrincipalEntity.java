@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.CurrentTimestamp;
+
 @Data
 @Entity
 @Table(name = "tbl_principal")
@@ -18,6 +20,7 @@ public class PrincipalEntity {
 
     private String descricao;
 
+    @CurrentTimestamp
     private LocalDateTime dataCadastro;
 
     @PrePersist

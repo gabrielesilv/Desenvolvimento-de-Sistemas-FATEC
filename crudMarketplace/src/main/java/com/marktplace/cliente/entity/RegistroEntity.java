@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.CurrentTimestamp;
+
 @Data
 @Entity
 @Table(name = "tbl_registro")
@@ -17,6 +19,7 @@ public class RegistroEntity {
     @JoinColumn(name = "id_usuario")
     private UsuarioEntity usuario;
 
+    @CurrentTimestamp
     private LocalDateTime dataRegistro;
 
     private String status;
